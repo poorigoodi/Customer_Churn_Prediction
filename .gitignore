@@ -1,0 +1,60 @@
+# Virtual environments
+.venv/
+venv/
+env/
+ENV/
+
+# Python cache
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+*.egg-info/
+.eggs/
+dist/
+build/
+
+# Testing / coverage
+.pytest_cache/
+.coverage
+htmlcov/
+.mypy_cache/
+.ruff_cache/
+
+# Jupyter
+.ipynb_checkpoints/
+
+# Model artifacts (regenerate via training)
+models/*.joblib
+models/*.pkl
+!models/.gitkeep
+
+# Processed data
+data/processed/*
+!data/processed/.gitkeep
+
+# Raw dataset (user-provided)
+data/raw/*.csv
+!data/raw/.gitkeep
+
+# Local environment / IDE
+.env
+.env.*
+.idea/
+.vscode/
+*.swp
+*.swo
+.DS_Store
+Thumbs.db
+
+# Machine-readable reports are regenerable via training
+reports/*.json
+# Keep committed EDA / evaluation figures for documentation
+!reports/figures/
+
+# Temporary files
+*.tmp
+*.log
+tmp/
+temp/
