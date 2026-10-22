@@ -1,5 +1,7 @@
 # Customer Churn Prediction System
 
+![customer-churn-prediction](customer-churn-prediction.png)
+
 A complete, portfolio-ready machine learning system that predicts whether a telecom customer is likely to discontinue service. The project covers exploratory data analysis, reproducible preprocessing, model comparison (Logistic Regression, Random Forest, XGBoost), evaluation, feature importance, SHAP explainability, Excel reporting, a local Streamlit dashboard, and local prediction—no REST API required.
 
 ---
