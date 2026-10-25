@@ -1,6 +1,12 @@
 # Customer Churn Prediction System
 
-![customer-churn-prediction](customer-churn-prediction.png)
+<p align="center">
+  <img src="customer-churn-prediction.png" alt="Customer Churn Prediction" width="900"/>
+</p>
+
+<p align="center">
+  <b>14 tests passed</b> · XGBoost ROC-AUC <b>0.8448</b> · Local Streamlit dashboard
+</p>
 
 A complete, portfolio-ready machine learning system that predicts whether a telecom customer is likely to discontinue service. The project covers exploratory data analysis, reproducible preprocessing, model comparison (Logistic Regression, Random Forest, XGBoost), evaluation, feature importance, SHAP explainability, Excel reporting, a local Streamlit dashboard, and local prediction—no REST API required.
 
@@ -224,11 +230,33 @@ Depending on business cost asymmetry, operating thresholds (and risk bands) can 
 
 ### Evaluation charts
 
-![Model Comparison](reports/figures/model_comparison.png)
+<p align="center">
+  <img src="reports/figures/model_comparison.png" alt="Model Comparison" width="720"/>
+</p>
 
-![ROC Curve](reports/figures/roc_curve.png)
+<p align="center"><em>Model Comparison (CV ROC-AUC)</em></p>
 
-![Confusion Matrix](reports/figures/confusion_matrix.png)
+<p align="center">
+  <img src="reports/figures/roc_curve.png" alt="ROC Curve" width="520"/>
+  <img src="reports/figures/confusion_matrix.png" alt="Confusion Matrix" width="520"/>
+</p>
+
+<p align="center"><em>ROC Curve and Confusion Matrix — XGBoost</em></p>
+
+### Feature Importance & SHAP
+
+<p align="center">
+  <img src="reports/figures/feature_importance.png" alt="Feature Importance" width="720"/>
+</p>
+
+<p align="center"><em>Top Feature Importance</em></p>
+
+<p align="center">
+  <img src="reports/figures/shap_summary.png" alt="SHAP Summary" width="520"/>
+  <img src="reports/figures/shap_beeswarm.png" alt="SHAP Beeswarm" width="520"/>
+</p>
+
+<p align="center"><em>SHAP Summary (bar) and Beeswarm plot</em></p>
 
 ---
 
@@ -351,17 +379,83 @@ EDA highlights that informed modeling:
 - Fiber optic and electronic-check payment show elevated churn rates
 - Customers without tech support churn more often
 
-![Churn Distribution](reports/figures/churn_distribution.png)
+---
 
-![Churn by Contract](reports/figures/churn_by_contract.png)
+## Project Visuals
+
+### Exploratory Data Analysis
+
+<p align="center">
+  <img src="reports/figures/churn_distribution.png" alt="Churn Distribution" width="480"/>
+  <img src="reports/figures/churn_by_contract.png" alt="Churn by Contract" width="480"/>
+</p>
+
+<p align="center"><em>Churn Distribution · Churn Rate by Contract Type</em></p>
+
+<p align="center">
+  <img src="reports/figures/churn_by_internet.png" alt="Churn by Internet" width="480"/>
+  <img src="reports/figures/monthly_charges_distribution.png" alt="Monthly Charges" width="480"/>
+</p>
+
+<p align="center"><em>Churn by Internet Service · Monthly Charges by Churn</em></p>
+
+<p align="center">
+  <img src="reports/figures/tenure_vs_churn.png" alt="Tenure vs Churn" width="480"/>
+  <img src="reports/figures/correlation_heatmap.png" alt="Correlation Heatmap" width="480"/>
+</p>
+
+<p align="center"><em>Tenure vs Churn · Correlation Heatmap</em></p>
+
+<p align="center">
+  <img src="reports/figures/churn_by_payment.png" alt="Churn by Payment" width="480"/>
+  <img src="reports/figures/churn_by_techsupport.png" alt="Churn by Tech Support" width="480"/>
+</p>
+
+<p align="center"><em>Churn by Payment Method · Churn by Tech Support</em></p>
 
 ---
 
 ## Testing
 
+Run the automated test suite from the project root:
+
 ```bash
-pytest
+pytest -v
 ```
+
+### Latest test run
+
+```text
+============================= test session starts =============================
+platform win32 -- Python 3.14.7, pytest-9.1.1
+rootdir: E:\Customer_Churn_Prediction
+configfile: pytest.ini
+testpaths: tests
+collected 14 items
+
+tests/test_predict.py::test_risk_classification[0.0-Low] PASSED
+tests/test_predict.py::test_risk_classification[0.29-Low] PASSED
+tests/test_predict.py::test_risk_classification[0.3-Medium] PASSED
+tests/test_predict.py::test_risk_classification[0.69-Medium] PASSED
+tests/test_predict.py::test_risk_classification[0.7-High] PASSED
+tests/test_predict.py::test_risk_classification[1.0-High] PASSED
+tests/test_predict.py::test_prediction_response_structure PASSED
+tests/test_predict.py::test_invalid_input_raises PASSED
+tests/test_predict.py::test_missing_field_raises PASSED
+tests/test_preprocessing.py::test_clean_data_removes_id_and_encodes_target PASSED
+tests/test_preprocessing.py::test_missing_numerical_values_are_imputed PASSED
+tests/test_preprocessing.py::test_invalid_categorical_values_raise PASSED
+tests/test_preprocessing.py::test_feature_transformation_shape_consistency PASSED
+tests/test_preprocessing.py::test_invalid_target_label_raises PASSED
+
+============================= 14 passed in 6.04s ==============================
+```
+
+| Suite | Tests | Status |
+|---|---|---|
+| `tests/test_predict.py` | Risk bands, response structure, invalid / missing input | Passed |
+| `tests/test_preprocessing.py` | Cleaning, imputation, categories, transform shapes, labels | Passed |
+| **Total** | **14** | **All passed** |
 
 Tests cover:
 
